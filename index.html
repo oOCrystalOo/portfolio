@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="prism-atom-dark.css"
+          type="text/css"
+          media="screen" />
+
+    <script type="text/javascript" src="prism.js"></script>
+    <script type="text/javascript" src="prism.ruby.js"></script>
+
+    <title>Crystal Ng</title>
+
+    <meta name="description" 
+          content="Crystal is a junior web developer looking for opportunities to expand her knowledge. 
+                   She has experience with JavaScript, PHP, HTML5, CSS3, and jQuery. 
+                   She is currently learning Ruby with Rails and how to building web applications.">
+</head>
+<body>
+    <div class="about-container">
+        <ul>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#code-samples" class="nav-link">Code Samples</a></li>
+            <li><a href="#web-apps" class="nav-link">Web Apps</a></li>
+            <li><a href="#skills-tools" class="nav-link">Skills &amp; Tools</a></li>
+            <li class="hire-me"><a href="#hire-me" class="nav-link">Hire Me</a></li>
+        </ul>
+
+        <div class="about" id="about">
+            <img src="IMG-20160605-WA0026.jpg" class="my_img" />
+            <h1>Crystal Ng</h1>
+            <h2>Web Developer</h2>
+            <hr class="grey" />
+            <p class="biography">
+                Crystal is a web developer with 4 years of experience. She regularly uses Javascript, jQuery, PHP, HTML5, and CSS3.
+                She is currently learning Ruby with Rails and how to build web applications.
+                She is looking for opportunities to broaden her knowledge and gain more experiences.
+            </p>
+        </div>
+    </div>
+
+    <h3 id="code-samples">Code Snippets</h3>
+    <hr class="yellow" />
+    <div class="box">
+        <h4>Temperature Conversion</h4>
+        <p>
+            This Ruby program will prompt the user for a temperature
+            in degrees Celsius and let the user know what the
+            corresponding temperature is in Fahrenheit.
+        </p>
+    </div>
+    <div class="box">
+        <pre>
+        <code class="language-ruby">
+                def celsius_to_fahrenheit (celsius)
+                    return (celsius * 9/5) + 32
+                end
+
+                puts &quot;Enter degrees in celsius:&quot;
+                celsius = gets.chomp.to_f
+                fahrenheit = celsius_to_fahrenheit(celsius)
+                puts &quot;#{celsius}&deg;C is #{fahrenheit}&deg;F.&quot;
+            </code>
+        </pre>
+    </div>
+    <br class="clear" />
+
+    <div class="box">
+        <pre>
+        <code class="language-ruby">
+                def calc_ordinal (num)
+                    ones = num % 10
+                    if num % 100 == 11 || num % 100 == 12 || num % 100 == 13
+                        return &quot;th&quot;
+                    else
+                        if ones == 1
+                            return &quot;st&quot;
+                        elsif ones == 2
+                            return &quot;nd&quot;
+                        elsif ones == 3
+                            return &quot;rd&quot;
+                        else
+                            return &quot;th&quot;
+                        end
+                    end
+                end
+
+                def init ()
+                    puts &quot;What place in the race did you end up with? &quot;
+                    number = gets.chomp.to_i
+
+                    if number.to_i == 0
+                        puts &quot;Please enter a number...&quot;
+                        init()
+                        return
+                    end
+
+                    extra_msg = &quot;You can do better than that!&quot;
+                    if number &lt;= 3
+                        extra_msg = &quot;That's great!&quot;
+                    elsif number &lt;= 10
+                        extra_msg = &quot;That's ok, I suppose.&quot;
+                    end
+                    puts &quot;#{number}#{calc_ordinal(number)} place? #{extra_msg}&quot;
+                end
+
+                init()
+            </code>
+        </pre>
+    </div>
+    <div class="box">
+        <h4>Ordinal Challenge</h4>
+        <p>
+            This Ruby program will convert a plain number
+            to the ordinal of the number. So for example,
+            if the user enters 2, it will display 2nd, if
+            the user enters 3, it will display 3rd, etc.
+        </p>
+    </div>
+    <br class="clear" />
+
+    <div class="box">
+        <h4>Foobar</h4>
+        <p>
+            This Ruby program is an adaptation of a classic technical
+            interview problem which displays sequences
+            of the Foobar pattern.
+        </p>
+    </div>
+    <div class="box">
+        <pre>
+        <code class="language-ruby">
+                def foobar (num)
+                    if num % 3 == 0 &amp;&amp; num % 5 == 0
+                        puts &quot;Foobar&quot;
+                    elsif num % 3 == 0
+                        puts &quot;Foo&quot;
+                    elsif num % 5 == 0
+                        puts &quot;Bar&quot;
+                    else
+                        puts num
+                    end
+                end
+
+                puts &quot;How many items do you want to see?&quot;
+                max = gets.chomp.to_i
+
+                if max &lt;= 0
+                    puts &quot;Please enter a number higher than 0.&quot;
+                    return
+                end
+
+                puts &quot;Let's begin:&quot;
+                    max.times do |num|
+                    foobar(num + 1)
+                end
+            </code>
+        </pre>
+    </div>
+    <br class="clear" />
+
+    <h3 id="web-apps">Web Apps</h3>
+    <hr class="yellow" />
+
+    <div class="box">
+		<a href="https://splurty-crystal-ng.herokuapp.com">
+			<h4>Quote Generator</h4>
+			<img src="splurty.png" class="full-width" />
+			<p>
+				A database-powered quote generator with a mobile-first
+				design, using the Ruby on Rails framework, HTML, and CSS.
+				Uses Git and GitHub for version control, and launched
+				on Heroku.
+			</p>
+		</a>
+    </div>
+
+    <div class="box">
+		<a href="https://nomster-crystal-ng.herokuapp.com">
+			<h4>Yelp Clone</h4>
+			<img src="nomster.png" class="full-width" />
+			<p>
+				A Yelp clone that integrates with the Google Maps API
+				and includes features like user comments, star ratings,
+				image uploading, and user authentication.
+			</p>
+		</a>
+    </div>
+    <br class="clear" />
+
+    <div class="box">
+        <h4>Two-Sided Market Place</h4>
+        <img src="flixter.png" class="full-width" />
+        <p>
+            A two-sided, video-streaming marketplace platform that
+            features credit card payment capabilities, user role
+            management, complex user interfaces, and advanced
+            database relationships.
+        </p>
+    </div>
+    <div class="box">
+        <h4>Test Driven Development</h4>
+        <img src="grammable.png" class="full-width" />
+        <p>
+            An Instagram clone that was built using industry-standard, test-driven
+            development following numerous red/green/refactor cycles.
+        </p>
+    </div>
+    <br class="clear" />
+    <div class="box">
+        <h4>Single Page Todo Application</h4>
+        <img src="todoster.png" class="full-width" />
+        <p>
+            This single-page to-do application features a
+            fluid user interface that– by using JavaScript–
+            allows users to rapidly add dynamic content.
+        </p>
+    </div>
+    <div class="box">
+        <h4>Agile Team Project</h4>
+        <img src="chess.png" class="full-width" />
+        <p>
+            Worked on an Agile software development team building
+            a chess application. Under the guidance of a senior software engineer,
+            we had weekly Agile team meetings for code reviews, sprint planning,
+            and feature assignments.
+        </p>
+    </div>
+    <br class="clear" />
+
+    <h3 id="skills-tools">Skills &amp; Tools</h3>
+
+    <hr class="yellow" />
+    <p class="skills-and-tools">
+        Crystal has developed proficiency and expertise
+        in the following programming languages and
+        comfort with the following tools.
+    </p>
+    <div class="icons">
+        <img src="github.png" class="icons" />
+        <img src="rubocop.png" class="icons" />
+        <img src="trello.png" class="icons" />
+        <img src="slack.png" class="icons" />
+        <img src="codeship.png" class="icons" />
+        <br class="clear" />
+        <img src="skills.png" class="icons" />
+    </div>
+
+    <div class="contact-me">
+        <h3 class="contact-headline" id="hire-me">Contact</h3>
+        <hr class="yellow" />
+        <p class="contact-info">
+            Currently entertaining new opportunities.
+            Please get in touch via email:
+        </p>
+        <p>
+            <a href="mailto:ng.crystal.wy@gmail.com" class="contact-link">
+                ng.crystal.wy@gmail.com
+            </a>
+        </p>
+    </div>
+</body>
+</html>
