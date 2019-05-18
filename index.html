@@ -12,14 +12,14 @@
           media="screen" />
 
     <script type="text/javascript" src="prism.js"></script>
-    <script type="text/javascript" src="prism.ruby.js"></script>
 
     <title>Crystal Ng</title>
 
     <meta name="description" 
-          content="Crystal is a junior web developer looking for opportunities to expand her knowledge. 
-                   She has experience with JavaScript, PHP, HTML5, CSS3, and jQuery. 
-                   She is currently learning Ruby with Rails and how to building web applications.">
+          content="Crystal is a web developer with 4 years of experience. She regularly uses Javascript, jQuery, PHP, HTML5, and CSS3.
+                  She is experienced with creating Wordpress Plugins, as well as JS-based web applications with mobile-first responsive designs.
+                  She is currently learning Ruby with Rails and how to build web applications using the MVC model.
+                  She is looking for opportunities to broaden her knowledge and gain more experiences.">
 </head>
 <body>
     <div class="about-container">
@@ -38,7 +38,8 @@
             <hr class="grey" />
             <p class="biography">
                 Crystal is a web developer with 4 years of experience. She regularly uses Javascript, jQuery, PHP, HTML5, and CSS3.
-                She is currently learning Ruby with Rails and how to build web applications.
+                She is experienced with creating Wordpress Plugins, as well as JS-based web applications with mobile-first responsive designs.
+                She is currently learning Ruby with Rails and how to build web applications using the MVC model.
                 She is looking for opportunities to broaden her knowledge and gain more experiences.
             </p>
         </div>
@@ -163,55 +164,114 @@
         </pre>
     </div>
     <br class="clear" />
+    <div class="box">
+        <pre>
+        <code class="language-php">
+                function get_weekdays ($date_1, $date_2) {
+                    /* $day_1, $day_2 formatted dates as yyyy-mm-dd
+                    *  Example: day_1 = xxxx-xx-01, day_2 = xxxx-xx-17
+                    *  [ S  M  T  W  T  F  S ] Days of week [0 - 6]
+                    *    1 [2  3  4  5  6  7   [completed week] - Starts on the 2nd because we start counting on the day after
+                    *    8][9  10 11 12 13 14  [completed week]
+                    *    15]16 17              leftover days (2)
+                    *  End result should be (5days * 2complete weeks) + 2 leftover week days = 12 weekdays
+                    */
+                    try {
+                        $day_1 = new DateTime($date_1);
+                        $day_2 = new DateTime($date_2);
+                        $begin = $day_1;
+                        $end = $day_2;
+                        if ($day_1 > $day_2) {
+                            $begin = $day_2;
+                            $end = $day_1;
+                        }
+                        $diff = $day_1->diff($day_2);
+                        $diff_days = $diff->days;                   //Get number of days between these 2 dates
+                        $complete_weeks = floor($diff_days / 7);    //Get number of completed weeks.
+                        $weekdays = $complete_weeks * 5;            //Each completed week will have 5 days
+                        if ($diff_days % 7 !== 0) {
+                            $leftover_days = $diff_days % 7;        //Get leftover days
+                            $completed_days = 1 + ($complete_weeks * 7); //Start on 1 day after, and then add the bulk of completed weeks
+                            $begin_date = $begin->modify('+' . $completed_days . ' day');
+                            while ($leftover_days >= 0) {
+                                $day_of_week = date_format($begin_date, 'w');
+                                if ($day_of_week !== '0' && $day_of_week !== '6' ) {  //0,6 are weekend
+                                    $weekdays++;
+                                }
+                                $begin_date->modify('+1 day');
+                                $leftover_days--;
+                            }
+                        }
+                        return $weekdays;
+                    } catch (Exception $e) {
+                        error_log(print_r($e, true));
+                    }
+                }
+            </code>
+        </pre>
+    </div>
+    <div class="box">
+        <h4>Get Weekdays</h4>
+        <p>
+            This PHP script calculates and returns the number of weekdays between 2 given dates.
+        </p>
+    </div>
+
 
     <h3 id="web-apps">Web Apps</h3>
     <hr class="yellow" />
 
     <div class="box">
-		<a href="https://splurty-crystal-ng.herokuapp.com">
-			<h4>Quote Generator</h4>
-			<img src="splurty.png" class="full-width" />
-			<p>
-				A database-powered quote generator with a mobile-first
-				design, using the Ruby on Rails framework, HTML, and CSS.
-				Uses Git and GitHub for version control, and launched
-				on Heroku.
-			</p>
-		</a>
+        <h4>Quote Generator</h4>
+        <img src="splurty.png" class="full-width" />
+        <p>
+            A database-powered quote generator with a mobile-first
+            design, using the Ruby on Rails framework, HTML, and CSS.
+            Uses Git and GitHub for version control, and launched
+            on Heroku.
+        </p>
+        <a href="https://splurty-crystal-ng.herokuapp.com">Link to Heroku app</a>
+        <br />
+        <a href="https://github.com/oOCrystalOo/ruby-splurty">Link to Github</a>
     </div>
 
     <div class="box">
-		<a href="https://nomster-crystal-ng.herokuapp.com">
-			<h4>Yelp Clone</h4>
-			<img src="nomster.png" class="full-width" />
-			<p>
-				A Yelp clone that integrates with the Google Maps API
-				and includes features like user comments, star ratings,
-				image uploading, and user authentication.
-			</p>
-		</a>
+        <h4>Yelp Clone</h4>
+        <img src="nomster.png" class="full-width" />
+        <p>
+            A Yelp clone that integrates with the Google Maps API
+            and includes features like user comments, star ratings,
+            image uploading, and user authentication.
+        </p>
+        <a href="https://nomster-crystal-ng.herokuapp.com">Link to Heroku app</a>
+        <br />
+        <a href="https://github.com/oOCrystalOo/ruby-nomster">Link to Github</a>
     </div>
     <br class="clear" />
 
     <div class="box">
-		<a href="https://flixter-crystal-ng.herokuapp.com">
-			<h4>Two-Sided Market Place</h4>
-			<img src="flixter.png" class="full-width" />
-			<p>
-				A two-sided, video-streaming marketplace platform that
-				features credit card payment capabilities, user role
-				management, complex user interfaces, and advanced
-				database relationships.
-			</p>
-		</a>
+        <h4>Two-Sided Market Place</h4>
+        <img src="flixter.png" class="full-width" />
+        <p>
+            A two-sided, video-streaming marketplace platform that
+            features credit card payment capabilities, user role
+            management, complex user interfaces, and advanced
+            database relationships.
+        </p>
+        <a href="https://flixter-crystal-ng.herokuapp.com">Link to Heroku app</a>
+        <br />
+        <a href="https://github.com/oOCrystalOo/ruby-flixter">Link to Github</a>
     </div>
     <div class="box">
-		<h4>Test Driven Development</h4>
-		<img src="grammable.png" class="full-width" />
-		<p>
-			An Instagram clone that was built using industry-standard, test-driven
-			development following numerous red/green/refactor cycles.
-		</p>
+        <h4>Test Driven Development</h4>
+        <img src="grammable.png" class="full-width" />
+        <p>
+            An Instagram clone that was built using industry-standard, test-driven
+            development following numerous red/green/refactor cycles.
+        </p>
+        <a href="https://grammable-crystal-ng.herokuapp.com">Link to Heroku app</a>
+        <br />
+        <a href="https://github.com/oOCrystalOo/ruby-grammable">Link to Github</a>
     </div>
     <br class="clear" />
     <div class="box">
@@ -222,8 +282,11 @@
             fluid user interface that– by using JavaScript–
             allows users to rapidly add dynamic content.
         </p>
+        <a href="https://todo-crystal-ng.herokuapp.com">Link to Heroku app</a>
+        <br />
+        <a href="https://github.com/oOCrystalOo/ruby-todo">Link to Github</a>
     </div>
-    <div class="box">
+    <div class="box hidden">
         <h4>Agile Team Project</h4>
         <img src="chess.png" class="full-width" />
         <p>
@@ -245,10 +308,10 @@
     </p>
     <div class="icons">
         <img src="github.png" class="icons" />
-        <img src="rubocop.png" class="icons" />
-        <img src="trello.png" class="icons" />
+        <img src="rubocop.png" class="icons hidden" />
+        <img src="trello.png" class="icons hidden" />
         <img src="slack.png" class="icons" />
-        <img src="codeship.png" class="icons" />
+        <img src="codeship.png" class="icons hidden" />
         <br class="clear" />
         <img src="skills.png" class="icons" />
     </div>
@@ -257,13 +320,17 @@
         <h3 class="contact-headline" id="hire-me">Contact</h3>
         <hr class="yellow" />
         <p class="contact-info">
-            Currently entertaining new opportunities.
+            Currently looking for new opportunities.
             Please get in touch via email:
-        </p>
-        <p>
+            <br />
             <a href="mailto:ng.crystal.wy@gmail.com" class="contact-link">
                 ng.crystal.wy@gmail.com
             </a>
+        </p>
+        <p>
+            <a href="https://github.com/oOCrystalOo/" class="contact-link">View my GitHub profile</a>
+            <br />
+            <a href="https://www.linkedin.com/in/crystal-ng-219362b8/" class="contact-link">Let's connect on LinkedIn</a>
         </p>
     </div>
 </body>

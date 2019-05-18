@@ -4,6 +4,10 @@
     font-family: 'Raleway', sans-serif;
 }
 
+.hidden {
+    display: none!important;
+}
+
 div.about-container {
     background: url('bg.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -82,6 +86,7 @@ p {
     margin-left: 5%;
     margin-top: 80px;
     vertical-align: middle;
+    text-align: center;
 }
 
 .clear {
